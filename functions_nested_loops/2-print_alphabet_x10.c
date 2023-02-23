@@ -13,7 +13,7 @@ for (printx10 = 0; printx10 < 10; ++printx10)
 {
 for (alphabet = 'a'; alphabet <= 'z'; alphabet++)
 {
-_putchar(c);
+_putchar(alphabet);
 }
 _putchar('\n');
 }
