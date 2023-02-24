@@ -11,7 +11,7 @@ _putchar('\n');
 else
 for (b = 0; n > 0; n--, b++)
 {
-for (a = 0; i < j; a++)
+for (a = 0; a < b; a++)
 {
 _putchar(' ');
 }
