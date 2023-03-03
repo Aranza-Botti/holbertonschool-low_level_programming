@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 #include <ctype.h>
 /**
 * cap_string - Capitalizes all words of a string.
