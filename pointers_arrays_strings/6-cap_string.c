@@ -7,24 +7,41 @@
 */
 char *cap_string(char *s)
 {
-int i, j;
-char sep[] = ",;.!?\"(){}\n\t ";
-for (i = 0; str[i] != '\0'; i++)
+int i = 0;
+int inside = 0;
+while (n[i] != '\0')
 {
-if (i == 0)
+if ((n[i] < 91 && n[i] > 64) && inside == 0)
 {
-if (str[i] >= 'a' && str[i] <= 'z')
-str[i] -= 32;
+inside = 1;
 }
-for (j = 0; sep[j] != '\0'; j++)
+if ((n[i] < 58 && n[i] > 47) && inside == 0)
 {
-if (str[i] == sep[j])
+inside = 1;
+}
+if ((n[i] < 123 && n[i] > 96) && inside == 0)
 {
-if (str[i + 1] >= 'a' && str[i + 1] <= 'z')
-str[i + 1] -= 32;
-break;
+n[i] = (n[i] - 32);
+inside = 1;
 }
+switch (n[i])
+{
+case 32:
+case 9:
+case 10:
+case 44:
+case 59:
+case 46:
+case 33:
+case 63:
+case 34:
+case 40:
+case 41:
+case 123:
+case 125:
+inside = 0;
 }
+i++;
 }
-return (str);
+return (n);
 }
