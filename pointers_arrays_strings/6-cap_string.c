@@ -7,20 +7,24 @@
 */
 char *cap_string(char *s)
 {
-int i;
-for (i = 0; s[i] != '\0'; i++)
+int i, j;
+char sep[] = ",;.!?\"(){}\n\t ";
+for (i = 0; str[i] != '\0'; i++)
 {
-if (i == 0 || !isalpha(s[i - 1]))
-s[i] = toupper(s[i]);
-if (s[i] == '\t' || s[i] == '\n' || s[i] == ' ' || s[i] == ',' ||
-s[i] == ';' || s[i] == '.' || s[i] == '!' || s[i] == '?' ||
-s[i] == '"' || s[i] == '(' || s[i] == ')' || s[i] == '{' ||
-s[i] == '}')
+if (i == 0)
 {
-i++;
-if (s[i] >= 'a' && s[i] <= 'z')
-s[i] = toupper(s[i]);
+if (str[i] >= 'a' && str[i] <= 'z')
+str[i] -= 32;
+}
+for (j = 0; sep[j] != '\0'; j++)
+{
+if (str[i] == sep[j])
+{
+if (str[i + 1] >= 'a' && str[i + 1] <= 'z')
+str[i + 1] -= 32;
+break;
 }
 }
-return (s);
+}
+return (str);
 }
