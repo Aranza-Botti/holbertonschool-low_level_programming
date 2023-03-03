@@ -1,47 +1,32 @@
 #include "main.h"
-#include <ctype.h>
 /**
 * cap_string - Capitalizes all words of a string.
-* @s: String to capitalize.
-* Return: Pointer to the resulting string.
+* @str: The string to be capitalized.
+* Return: A pointer to the changed string.
 */
-char *cap_string(char *s)
+char *cap_string(char *str)
 {
-int i = 0;
-int inside = 0;
-while (n[i] != '\0')
+int index = 0;
+while (str[index])
 {
-if ((n[i] < 91 && n[i] > 64) && inside == 0)
-{
-inside = 1;
+while (!(str[index] >= 'a' && str[index] <= 'z'))
+index++;
+if (str[index - 1] == ' ' ||
+str[index - 1] == '\t' ||
+str[index - 1] == '\n' ||
+str[index - 1] == ',' ||
+str[index - 1] == ';' ||
+str[index - 1] == '.' ||
+str[index - 1] == '!' ||
+str[index - 1] == '?' ||
+str[index - 1] == '"' ||
+str[index - 1] == '(' ||
+str[index - 1] == ')' ||
+str[index - 1] == '{' ||
+str[index - 1] == '}' ||
+index == 0)
+str[index] -= 32;
+index++;
 }
-if ((n[i] < 58 && n[i] > 47) && inside == 0)
-{
-inside = 1;
-}
-if ((n[i] < 123 && n[i] > 96) && inside == 0)
-{
-n[i] = (n[i] - 32);
-inside = 1;
-}
-switch (n[i])
-{
-case 32:
-case 9:
-case 10:
-case 44:
-case 59:
-case 46:
-case 33:
-case 63:
-case 34:
-case 40:
-case 41:
-case 123:
-case 125:
-inside = 0;
-}
-i++;
-}
-return (n);
+return (str);
 }
